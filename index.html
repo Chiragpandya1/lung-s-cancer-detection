@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+ <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<div class="container-fluid1 bg-2 text-center" id="Home" style="background-repeat: repeat;background-blend-mode: soft-light;background-size:cover;background-clip: border-box;background-image: url(../static/img/2.jpg)">
+    <br>
+    <br>
+    <h2 style="font-size: 50px; font-weight: bold; color:dark; text-align:center;text-underline-position: auto;">Lung Cancer Detection And Prediction</h2>
+    <br>
+<h3> LUNG CANCER</h3>
+
+
+Lung cancer, also known as lung carcinoma, is a malignant lung tumor characterized by uncontrolled cell growth in tissues of the lung.
+ This growth can spread beyond the lung by the process of metastasis into nearby tissue or other parts of the body.</p>
+  <div style="display: flex; justify-content: center; align-items: center; ">
+<img src="https://images.medicinenet.com/images/image_collection/anatomy/lung-cancer.jpg" height="100%">
+</div>
+
+
+
+<h3> In this study, we tried to predict Lung Cancer using 5 different algorithm:</h3>
+1.Logistic regression classification <br>     
+2.SVM (Support Vector Machine)classification  <br>   
+3.Decision tree classification  <br>   
+4.Random forest classification  <br>   
+5.K-Nearest Neighbor classification <br><br><hr>
+
+<h4> we use logistic regression because the accuracy of logistic regression is highest (96%) in order to predict lung cancer.</h4><br>
+     <br>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post">
+        <table>
+                <tr>
+                        <td>
+                                1. Gender(male):1,(female):0 :
+                                </td>
+                                <td>
+                                        <input type="text" name="GENDER" placeholder="GENDER" required="required" /><br>
+                                </td>
+                </tr>
+
+                <tr>
+                        <td>
+                                2. Age :
+                                </td>
+                                <td>
+                                        <input type="text" name="AGE" placeholder="AGE" required="required">
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                3. Smoking: YES=2 , NO=1:
+                                </td>
+                                <td>
+                                        
+                                      <input type="text" name="smoking" placeholder="smoking" required="required">        
+                                </td>
+                </tr>
+                <tr>
+                       
+                        <td>
+                                4. Yellow fingers: YES=2 , NO=1:
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="yellow fingers" placeholder="yellow fingers" required="required">
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                5. Anxiety: YES=2 , NO=1 :
+                                </td>
+                                <td>
+                                        <input type="text" name="ANXIETY" placeholder="ANXIETY" required="required"><br><br>
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                6. Peer_pressure: YES=2 , NO=1 :
+                                </td>
+                                <td>
+                                        <input type="text" name="PEER_PRESSURE" placeholder="PEER_PRESSURE" required="required"><br><br>
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                7. Chronic Disease: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="CRONIC DISEASE" placeholder="CRONIC DIASESE" required="required"><br><br>
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                8. Fatigue: YES=2 , NO=1 :
+                                
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="FATIGUE" placeholder="FATIGUE" required="required"><br><br>
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>9. Allergy: YES=2 , NO=1 :
+                                
+                                </td>
+                                
+      
+                                <td>
+                                        
+
+	<input type="text" name="ALLERGY" placeholder="ALLERGY" required="required"><br><br>
+                                
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                10. Wheezing: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="WHEEZING" placeholder="WHEEZING" required="required"><br><br>    
+                                </td>
+                </tr>
+                <tr>
+                        <td>11. Alcohol: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+
+                                        <input type="text" name="ALCOHOL CONSUMING" placeholder="ALCOHOL CONSUMING" required="required"><br><br>
+                                        
+                                </td>
+                </tr>
+                <tr>
+                        <td>12. Coughing: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="COUGHING" placeholder="COUGHING" required="required"><br><br>
+                                        
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                
+                                13. Shortness of Breath: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="SHORTNESS OF BREATH" placeholder="SHORTNESS OF BREATH" required="required"><br><br>    
+                                </td>
+                </tr>
+                <tr>
+                        <td>14. Swallowing Difficulty: YES=2 , NO=1 :
+
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="SWALLOWING DIFFICULTY" placeholder="SWALLOWING DIFFICULTY" required="required"><br><br>
+      
+                                </td>
+                </tr>
+                <tr>
+                        <td>
+                                15. Chest pain: YES=2 , NO=1 :
+                                
+                                </td>
+                                <td>
+                                        <input type="text" name="CHEST PAIN" placeholder="CHEST PAIN" required="required"><br><br>
+                                        
+                                </td>
+                </tr>
+
+
+                <tr>
+                        <td>
+                                
+                                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                                <button type="Reset" class="btn btn-primary btn-block btn-large mt-2">Reset</button>
+                                
+                                
+                        </td>
+                 </tr>
+
+
+    	
+        
+        </table>
+
+
+     </form>
+
+       
+            
+
+
+   <br>
+   <br>
+   {{ prediction_text }}
+	<button type="Reset" class="btn btn-primary btn-block btn-large" onclick="history.back()">Go Back</button>
+
+ 
+</div> 
+
+
+
+</body>
+</html>
+
+
+
+    
